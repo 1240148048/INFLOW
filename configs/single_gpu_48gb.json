@@ -1,0 +1,52 @@
+{
+  "seed": 42,
+  "model": {
+    "name": "Qwen/Qwen3-4B-Instruct-2507",
+    "dtype": "bfloat16",
+    "trust_remote_code": false
+  },
+  "generation": {
+    "max_prompt_tokens": 2048,
+    "max_new_tokens": 10,
+    "temperature": 0.6,
+    "top_p": 1.0,
+    "do_sample": true,
+    "num_samples": 5
+  },
+  "selection": {
+    "fraction": 0.2,
+    "embedding_projection_dim": 64,
+    "balance_domains": true
+  },
+  "training": {
+    "output_dir": "artifacts/checkpoints/rig_lora",
+    "learning_rate": 0.00002,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.03,
+    "gradient_clip_norm": 1.0,
+    "max_sequence_tokens": 8192,
+    "gradient_checkpointing": true,
+    "rollout_max_new_tokens": 8,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.0,
+    "lora_targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "evaluation": {
+    "num_rollouts": 3,
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "max_new_tokens": 10,
+    "ece_bins": 15,
+    "output": "artifacts/eval"
+  }
+}

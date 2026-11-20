@@ -1,0 +1,78 @@
+{
+  "seed": 42,
+  "model": {
+    "name": "Qwen/Qwen3-4B-Instruct-2507",
+    "dtype": "bfloat16",
+    "trust_remote_code": false
+  },
+  "generation": {
+    "num_samples": 1,
+    "max_prompt_tokens": 12288,
+    "max_new_tokens": 1024,
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "contract_generation": {
+    "max_prompt_tokens": 2048,
+    "max_new_tokens": 2048,
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "representation": {
+    "projection_dim": 64,
+    "mode": "trajectory",
+    "use_certainty": true
+  },
+  "selection": {
+    "fraction": 0.2,
+    "context_count": 3
+  },
+  "rollout": {
+    "max_prompt_tokens": 12288,
+    "max_new_tokens": 1024,
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "training": {
+    "updates": 250,
+    "batch_size": 4,
+    "max_sequence_tokens": 16384,
+    "learning_rate": 2.5e-06,
+    "warmup_ratio": 0.03,
+    "ema_retention": 0.995,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "gradient_checkpointing": true,
+    "kl_chunk_tokens": 16,
+    "checkpoint_every": 50
+  },
+  "evaluation": {
+    "num_samples": 3,
+    "max_prompt_tokens": 12288,
+    "max_new_tokens": 1024,
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "code": {
+    "probe_count": 16,
+    "probe_timeout": 5,
+    "docker_image": "inflow-mbpp:py311"
+  },
+  "teacher_generation": {
+    "num_samples": 5,
+    "max_prompt_tokens": 12288,
+    "max_new_tokens": 1024,
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "belief_protocol": "joint_1_5_js_only_clustering_v8"
+}

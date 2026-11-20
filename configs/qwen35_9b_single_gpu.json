@@ -1,0 +1,87 @@
+{
+  "seed": 42,
+  "model": {
+    "name": "Qwen/Qwen3.5-9B",
+    "dtype": "bfloat16",
+    "trust_remote_code": false
+  },
+  "generation": {
+    "max_prompt_tokens": 2048,
+    "max_new_tokens": 256,
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "num_samples": 1
+  },
+  "teacher_generation": {
+    "max_prompt_tokens": 4096,
+    "max_new_tokens": 256,
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "num_samples": 5
+  },
+  "representation": {
+    "projection_dim": 64
+  },
+  "neuron": {
+    "per_layer_topk": 2000,
+    "global_topk": 5000
+  },
+  "selection": {
+    "fraction": 0.2,
+    "context_count": 3
+  },
+  "training": {
+    "max_trajectories": 2000,
+    "batch_size": 4,
+    "learning_rate": 0.0000025,
+    "weight_decay": 0.0,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.03,
+    "gradient_clip_norm": 1.0,
+    "ema_rate": 0.00501886,
+    "student_max_prompt_tokens": 2048,
+    "max_sequence_tokens": 8192,
+    "rollout_max_new_tokens": 256,
+    "rollout_temperature": 0.6,
+    "rollout_top_p": 0.95,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.0,
+    "lora_targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "in_proj_qkv",
+      "in_proj_z",
+      "in_proj_a",
+      "in_proj_b",
+      "out_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "kl_chunk_tokens": 16,
+    "log_every": 10,
+    "checkpoint_trajectories": [
+      200,
+      400,
+      600,
+      800,
+      1000,
+      1200,
+      1400,
+      1600,
+      1800,
+      2000
+    ]
+  },
+  "evaluation": {
+    "num_rollouts": 3,
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "max_prompt_tokens": 2048,
+    "max_new_tokens": 256,
+    "ece_bins": 15
+  }
+}
