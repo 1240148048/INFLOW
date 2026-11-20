@@ -1,0 +1,7 @@
+-e .[test,ministral]
+# Compatible data-stack pins for the PyTorch 2.5.1 AutoDL environment.
+numpy==1.26.4
+pyarrow==17.0.0
+pandas>=2.2.3,<3
+scipy==1.13.1
+matplotlib>=3.8,<4

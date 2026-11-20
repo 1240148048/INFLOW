@@ -1,0 +1,3 @@
+# Install the CUDA-matched PyTorch build separately before this file.
+# Editable installation uses the same dependency definitions for all experiments.
+-e .[test]

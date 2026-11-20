@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inflow-self-distillation"
+version = "0.2.0"
+description = "Retrieval-guided data selection for annotation-free self-distillation"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.4,<3",
+  "huggingface-hub>=0.27,<2",
+  "datasets>=2.19,<5",
+  "pyarrow>=17,<26",
+  "pandas>=2.2,<3",
+  "matplotlib>=3.8,<4",
+  "numpy>=1.26.4,<3",
+  "scipy>=1.13,<2",
+  "peft==0.21.2",
+  "accelerate>=1,<2",
+  "safetensors>=0.4",
+  "tqdm>=4.66",
+  "transformers==5.12.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0.0"]
+ministral = ["mistral-common>=1.8.6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
